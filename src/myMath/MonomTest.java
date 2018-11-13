@@ -1,5 +1,7 @@
 package myMath;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -12,12 +14,25 @@ class MonomTest {
 
 	@Test
 	void testMonomDoubleInt() {
-		double cof = 2.5;
-		int power = 3;
-		Monom m1 = new Monom(cof,power);
-		Monom m2 = new Monom(2.5,3);
-		assertEquals(m2+"",m1+"");
-
+		
+		boolean threw = false;
+		try {
+			
+			Monom m1 = new Monom(0,-3);
+			
+		}
+		catch (RuntimeException e){
+			threw = true;
+		}
+		if(!threw) {
+			fail("should threw because has a worng input");
+		}
+		else {
+			Monom m1 = new Monom(2.5,3);
+			Monom m2 = new Monom(2.5,3);
+			assertEquals(m2+"",m1+"");
+		}
+		
 	}
 
 	@Test
@@ -32,7 +47,7 @@ class MonomTest {
 	void testGet_coefficient() {
 		double cof = -2.4;
 		Monom m1 = new Monom(cof,2);
-		assertEquals(cof,m1.get_coefficient());
+		assertEquals(cof+"",m1.get_coefficient()+"");
 		if(cof!= m1.get_coefficient()) {
 			fail("JUnit fail: Somthing is wrong with the get_coefficient() method");
 			}
@@ -49,12 +64,10 @@ class MonomTest {
 
 	@Test
 	void testF() {
-		double cof = -2.4;
-		int pow = 3;
-		double x = -1.2;
-		Monom m1 = new Monom(cof,pow);
-		double ev = cof*Math.pow(x, pow);
-		assertEquals(ev,m1.f(x));
+		
+		Monom m1 = new Monom(2,3);
+		double x = 1.0;
+		assertEquals("2.0",""+m1.f(x));
 	}
 
 	@Test
@@ -72,18 +85,17 @@ class MonomTest {
 		Monom m1 = new Monom(cof1,pow1);
 		Monom m2 = new Monom(cof2,pow2);
 		m1.multiply(m2);
-		assertEquals(m1.get_coefficient(), cof1*cof2);
+		assertEquals(m1.get_coefficient()+"", ""+cof1*cof2);
 		assertEquals(m1.get_power(), pow1+pow2);
 	}
 
 	@Test
 	void testAdd() {
-		double cof1 = -2.4, cof2 = 1.3;
-		int pow = 6;
-		Monom m1 = new Monom(cof1,pow);
-		Monom m2 = new Monom(cof2,pow);
-		m1.add(m2);
-		assertEquals(m1.get_coefficient(), cof1+cof2);
+		
+		Monom m3 = new Monom(2,2);
+		Monom m5 = new Monom(5,2);
+		m3.add(m5);
+		assertEquals("7.0*x^2", m3+"");
 	}
 
 	@Test

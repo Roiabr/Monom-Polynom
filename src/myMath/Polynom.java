@@ -127,8 +127,9 @@ public class Polynom implements Polynom_able{
 		Monom m3;
 		boolean flag = true;
 		if(p1.isZero() || this.isZero()) {
-			Polynom_able PolyMul1 = new Polynom("0");
+			Polynom PolyMul1 = new Polynom("0.0");
 			this.multiply(PolyMul1);
+			
 		}
 		while(iter1.hasNext()) {
 			Monom m1 = iter1.next();
@@ -201,22 +202,18 @@ public class Polynom implements Polynom_able{
 
 	@Override
 	public double root(double x0, double x1, double eps) {
-
-		double y1 = this.f(x0);
-		double y2 = this.f(x1);
-		if(y1 * y2 > 0) {
+		double M = x0;
+		if(f(x0) * f(x1) > 0) {
 			throw new RuntimeException("Error,the points are in the positve side of the axis");
 		}
-		double del = Math.abs(y1-y2);
-		while (del > eps) {
-			double xMid = (x0+x1)/2;
-			double yMid = this.f(xMid);
-			double dir = y1*yMid;
-			if(dir < 0) {x1 = xMid;}
-			else {x0=xMid;}
-			y1 = this.f(x0);
-			y2 = this.f(x1);
-			del = Math.abs(y1-y2);
+		while(Math.abs(x1 - x0) > eps) { //loop until the distance between the x1,0 small from eps
+			M = (x1 + x0)/2; //compute the middle of x1 and x0
+		
+			if(f(x0) * f(M) > 0) { //determination who to prmote to the other x
+				x0 = M; 
+			}
+			else
+				x1 = M;
 		}
 		return x0;
 	}
@@ -250,8 +247,13 @@ public class Polynom implements Polynom_able{
 			m2 = new Monom (m1); //copy the data of m1 to m2 
 			m2.derivative(); //Send m2 to derivative in Class "Monom"
 			polyNew.add(m2); 
+			
 		}
-		if (polyNew.isZero() == true) {
+		
+		Polynom p0 = new Polynom("0.0");
+		if (polyNew.equals(p0)==true) {
+			polyNew = new Polynom();
+			if(polyNew.isZero()==true)
 			System.out.println("The polynom is empty");
 			return polyNew;
 		}
