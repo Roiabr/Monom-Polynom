@@ -2,6 +2,8 @@ package myMath;
 
 import javax.swing.JFrame;
 import de.erichseifert.gral.data.DataTable;
+import de.erichseifert.gral.data.filters.Convolution;
+import de.erichseifert.gral.data.filters.Filter.Mode;
 import de.erichseifert.gral.plots.XYPlot;
 import de.erichseifert.gral.plots.lines.LineRenderer;
 import de.erichseifert.gral.ui.InteractivePanel;
@@ -11,6 +13,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.geom.Ellipse2D;
 import de.erichseifert.gral.data.DataSeries;
+import de.erichseifert.gral.data.DataSource;
 import de.erichseifert.gral.plots.XYPlot.XYPlotArea2D;
 import de.erichseifert.gral.plots.points.SizeablePointRenderer;
 import de.erichseifert.gral.util.GraphicsUtils;
@@ -39,16 +42,15 @@ public class LinePlotTest extends JFrame {
 			System.out.println("X:"+x + "," + "Y:" +y);
 		}
 		
-
-		XYPlot plot = new XYPlot(data);
+		DataSource filter = new Convolution(data, null, Mode.REPEAT, 1);
+		XYPlot plot = new XYPlot(filter,data1);
 		getContentPane().add(new InteractivePanel(plot));
 		LineRenderer lines = new DefaultLineRenderer2D();
-		plot.setLineRenderers(data, lines);
+		plot.setLineRenderers(filter, lines);
+		plot.setPointRenderers(filter, null);
 		Color color = new Color(0.0f, 0.0f, 0.0f);
-		plot.add(data1);
-		plot.getPointRenderers(data).get(0).setColor(color.MAGENTA);
-		plot.getPointRenderers(data1).get(0).setColor(color.BLUE);
-		plot.getLineRenderers(data).get(0).setColor(color.BLACK);
+		plot.getPointRenderers(data1).get(0).setColor(color.GREEN);
+		
 		// Draw a tick mark and a grid line every 10 units along x axis
 		double insetsTop = 20.0,
 			       insetsLeft = 60.0,
