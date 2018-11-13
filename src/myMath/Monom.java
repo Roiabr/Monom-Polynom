@@ -88,16 +88,19 @@ public class Monom implements function{
 	 */
 	public void add(Monom m1) {
 		// TODO Auto-generated method stub
-		if (m1==null)//if monom is empty
+		if (m1 == null)//if monom is empty
 		{
 
-			throw new RuntimeException();
+			throw new RuntimeException("the monom is empty so cant adding");
 		}
 		else
 		{
 			if(this._power == m1._power) {//if this monom has the same power of m1 power
 				this.set_coefficient(this._coefficient + m1._coefficient);//this coefficient + m1 coefficient
 
+			}
+			else {
+				throw new RuntimeException("the monom has a differnt power so cant adding");
 			}
 
 		}
