@@ -253,8 +253,6 @@ public class Polynom implements Polynom_able{
 		Polynom p0 = new Polynom("0.0");
 		if (polyNew.equals(p0)==true) {
 			polyNew = new Polynom();
-			if(polyNew.isZero()==true)
-			System.out.println("The polynom is empty");
 			return polyNew;
 		}
 		else
@@ -288,7 +286,7 @@ public class Polynom implements Polynom_able{
 	 * @param x0 - the start of the range 
 	 * @param x1 - the end of the range
 	 * @param epsilon - the width of rectangle
-	 * @return the approximated area above the x-axis below this Polynom and between the [x0,x1] range.
+	 * @return the approximated area  the x-axis below this Polynom and between the [x0,x1] range.
 	 */
 	public double areaUnderAxisX(double x0, double x1, double eps) {//this fuction copute the area 
 		// TODO Auto-generated method stub
