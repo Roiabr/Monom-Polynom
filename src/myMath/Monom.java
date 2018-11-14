@@ -1,7 +1,7 @@
 
 package myMath;
 
-//import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+
 
 /**
  * This class represents a simple "Monom" of shape a*x^b, where a is a real number and a is an integer (summed a none negative), 
