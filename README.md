@@ -5,7 +5,7 @@ Description
 
 • Include 3 interfaces such as: 
 
-    1.Function
+   	1.Function
   
   	2.Cont_Function
   
@@ -13,13 +13,13 @@ Description
   
 • Main Class:
 
- 		1.Test 
+ 	1.Test 
  
 • Other Classes:
 
   	1.Polynom 
  
- 		2.Monom 
+ 	2.Monom 
  
   	3.Monom_Comperator
  
@@ -27,7 +27,7 @@ Description
  
 Built With
 
-    •Eclipse
+    	•Eclipse
   
 Authors
 
