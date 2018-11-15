@@ -1,6 +1,8 @@
 
 package myMath;
 
+import java.io.IOException;
+
 //import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 
 /**
@@ -30,9 +32,13 @@ public class Monom implements function{
 	 * constructor 
 	 * @param a = the coefficient of the Monom
 	 * @param b = the power of the monom
+	 * @throws IOException  
 	 */ 
-	public Monom(double a, int b){
+	public Monom(double a, int b) {
 		this.set_coefficient(a);
+		if(b < 0 ) {
+			throw new RuntimeException("the power must be int bigger then zero");
+		}
 		this.set_power(b);
 	}
 	public Monom (Monom ot) {

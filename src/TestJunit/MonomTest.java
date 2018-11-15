@@ -12,11 +12,14 @@ class MonomTest {
 
 	@Test
 	void testMonomDoubleInt() {
-		
+		Monom m1 = new Monom(3,3);
+		if((m1.get_coefficient() != 3) || (m1.get_power() != 3)){
+			fail("monom constructor doesnt working well");
+		}
 		boolean threw = false;
 		try {
 			
-			Monom m1 = new Monom(0,-3);
+			m1 = new Monom(0, -3);
 			
 		}
 		catch (RuntimeException e){
@@ -26,9 +29,9 @@ class MonomTest {
 			fail("should threw because has a worng input");
 		}
 		else {
-			Monom m1 = new Monom(2.5,3);
+			Monom m3 = new Monom(2.5,3);
 			Monom m2 = new Monom(2.5,3);
-			assertEquals(m2+"",m1+"");
+			assertEquals(m2+"",m3+"");
 		}
 		
 	}
