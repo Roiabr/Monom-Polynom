@@ -1,6 +1,7 @@
 Project0----Polynom
 
-  This project represents the mathematical expersssion Monom and Polynom.
+  	This project represents the mathematical expersssion Monom and Polynom.
+	
 Description 
 
 • Include 3 interfaces such as: 
@@ -27,7 +28,7 @@ Description
  
 Built With
 
-    	•Eclipse
+    •Eclipse
   
 Authors
 
