@@ -1,6 +1,6 @@
-Project0----Polynom
+Polynom
 
-  	This project represents the mathematical expersssion Monom and Polynom.
+  This project represents the mathematical expersssion Monom and Polynom that give as an assignment inn class.
 	
 Description 
 
